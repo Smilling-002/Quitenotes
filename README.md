@@ -1,15 +1,18 @@
 Develop a basic mobile or web application that allows users to create, view, and delete notes.
 Requirement
 
+
 1. Home Screen
 • App title: QuickNotes
 • Button: Add Note
 • List of existing notes (titles only or full preview)
 
+
 2. Add Note Screen
 • Text input for Title
 • Text area for Note Content
 • Save button
+
 
 3. View Notes Screen
 • List or card view of all saved notes
