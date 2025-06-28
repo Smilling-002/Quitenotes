@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuickNotes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <div class="container">
+        <div class="header">
+            <h1>📝 QuickNotes</h1>
+            <p>Your personal note-taking companion</p>
+        </div>
+
+        <div class="controls">
+            <div class="search-filter-section">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search notes...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <div class="filter-sort">
+                    <select id="sortSelect">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="title">Title A-Z</option>
+                        <option value="title-desc">Title Z-A</option>
+                    </select>
+                    <select id="colorFilter">
+                        <option value="all">All Colors</option>
+                        <option value="blue">Blue</option>
+                        <option value="green">Green</option>
+                        <option value="orange">Orange</option>
+                        <option value="purple">Purple</option>
+                        <option value="red">Red</option>
+                        <option value="yellow">Yellow</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="openAddModal()">
+                ➕ Add Note
+            </button>
+        </div>
+
+        <div class="main-content">
+            <div class="stats" id="statsContainer">
+                <div class="stat-item">
+                    <strong id="totalNotes">0</strong> Total Notes
+                </div>
+                <div class="stat-item">
+                    <strong id="filteredNotes">0</strong> Showing
+                </div>
+            </div>
+
+            <div id="notesContainer">
+                <div class="notes-grid" id="notesGrid"></div>
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <h3>No notes yet!</h3>
+                    <p>Create your first note to get started</p>
+                    <button class="btn btn-primary" onclick="openAddModal()">
+                        ➕ Create Note
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Note Modal -->
+    <div class="modal" id="noteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Add New Note</h2>
+                <button class="close-btn" onclick="closeModal()">✕</button>
+            </div>
+            <form id="noteForm">
+                <div class="form-group">
+                    <label for="noteTitle">Title</label>
+                    <input type="text" id="noteTitle" placeholder="Enter note title..." required>
+                </div>
+                <div class="form-group">
+                    <label for="noteContent">Content</label>
+                    <textarea id="noteContent" placeholder="Write your note here..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Color</label>
+                    <div class="color-picker">
+                        <div class="color-option blue selected" data-color="blue"></div>
+                        <div class="color-option green" data-color="green"></div>
+                        <div class="color-option orange" data-color="orange"></div>
+                        <div class="color-option purple" data-color="purple"></div>
+                        <div class="color-option red" data-color="red"></div>
+                        <div class="color-option yellow" data-color="yellow"></div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="saveBtn">💾 Save Note</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- View Note Modal -->
+    <div class="modal" id="viewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="viewTitle"></h2>
+                <button class="close-btn" onclick="closeViewModal()">✕</button>
+            </div>
+            <div id="viewContent"></div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" onclick="closeViewModal()">Close</button>
+                <button type="button" class="btn btn-primary" id="editFromViewBtn">✏️ Edit</button>
+            </div>
+        </div>
+
+  <script src="QuickNote.js"></script>
+</body>
+</html>
